@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { projects } from "@/data/projects";
 //import GradientWaves from '@/components/GradientWaves';
 import type { Project } from "@/types/project";
@@ -21,6 +22,7 @@ export default function ProjectsSlider() {
     const isAnimatingRef = useRef(false);
     const mode = useSelector((state: RootState) => state.theme.mode);
     const isDark = mode === "dark";
+    const { t } = useTranslation();
 
     // index into `slides`; starts at 1 = first real project
     const [ index, setIndex ] = useState(1);
@@ -145,8 +147,8 @@ export default function ProjectsSlider() {
                 />
             </div>
             <div className="absolute top-10 left-6 md:left-12 z-10">
-                <p className="text-slate-500 text-sm">// featured work</p>
-                <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 dark:text-white">_projects</h2>
+                <p className="text-slate-500 text-sm">{t("projects.kicker")}</p>
+                <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 dark:text-white">{t("projects.title")}</h2>
             </div>
 
             <div ref={trackRef} className="flex h-full w-full will-change-transform z-10">
@@ -162,7 +164,7 @@ export default function ProjectsSlider() {
                 <button
                     type="button"
                     onClick={handlePrev}
-                    aria-label="Previous project"
+                    aria-label={t("projects.prev")}
                     className="h-12 w-12 rounded-full border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60
                                flex items-center justify-center text-slate-600 dark:text-slate-300
                                hover:border-orange-400 hover:text-orange-400 transition-colors"
@@ -183,7 +185,7 @@ export default function ProjectsSlider() {
                 <button
                     type="button"
                     onClick={handleNext}
-                    aria-label="Next project"
+                    aria-label={t("projects.next")}
                     className="h-12 w-12 rounded-full border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60
                                flex items-center justify-center text-slate-600 dark:text-slate-300
                                hover:border-orange-400 hover:text-orange-400 transition-colors"
@@ -196,6 +198,8 @@ export default function ProjectsSlider() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+    const { t } = useTranslation();
+
     return (
         <div className="relative w-full h-full flex items-center justify-center px-6 md:px-24">
             <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -214,7 +218,7 @@ function ProjectCard({ project }: { project: Project }) {
                         {project.title}
                     </h3>
                     <p className="text-slate-600 dark:text-slate-400 text-base mb-6 max-w-md">
-                        {project.description}
+                        {t(`projects.items.${project.id}`)}
                     </p>
                     <div className="flex gap-5 text-sm">
                         {project.link && (
@@ -224,7 +228,7 @@ function ProjectCard({ project }: { project: Project }) {
                                 rel="noopener noreferrer"
                                 className="text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300"
                             >
-                                live →
+                                {t("projects.live")}
                             </a>
                         )}
                         {project.github && (
@@ -234,7 +238,7 @@ function ProjectCard({ project }: { project: Project }) {
                                 rel="noopener noreferrer"
                                 className="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                             >
-                                documentation →
+                                {t("projects.docs")}
                             </a>
                         )}
                     </div>

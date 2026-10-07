@@ -1,0 +1,240 @@
+{
+  "nav": {
+    "hello": "_ciao",
+    "about": "_chi-sono",
+    "projects": "_progetti",
+    "certificates": "_certificati",
+    "contact": "_contatti"
+  },
+  "hero": {
+    "greeting": "\"Hello world\". Sono",
+    "roles": [
+      "Sviluppatore Frontend",
+      "Sviluppatore Backend",
+      "Sviluppatore Full Stack"
+    ],
+    "line1": "Persona determinata e grande lavoratrice",
+    "line2": "sviluppatore full stack con oltre 4 anni di esperienza professionale."
+  },
+  "about": {
+    "skills": "// Competenze principali",
+    "details": "dettagli",
+    "contacts": "contatti"
+  },
+  "documents": {
+    "bio": {
+      "title": "bio",
+      "lines": [
+        "/**",
+        " * Chi sono",
+        " ",
+        " * Sono un ingegnere informatico e dei sistemi di controllo",
+        " * appassionato di sviluppo software, sistemi embedded,",
+        " * robotica e veicoli autonomi.",
+        " ",
+        " * Mi piace creare applicazioni web moderne con React,",
+        " * TypeScript, JavaScript e tecnologie web moderne,",
+        " * esplorando anche lo sviluppo backend e le tecnologie",
+        " * cloud.",
+        " ",
+        " * La mia formazione ingegneristica mi ha dato esperienza",
+        " * pratica con microcontrollori, sistemi embedded,",
+        " * ROS2, computer vision e sistemi autonomi.",
+        " ",
+        " * Ho lavorato a progetti che vanno da applicazioni web",
+        " * full-stack a sistemi di guida autonoma per le corse,",
+        " * controllori embedded e dispositivi connessi.",
+        " ",
+        " * Mi piace risolvere problemi ingegneristici complessi,",
+        " * imparare nuove tecnologie e scrivere codice pulito",
+        " * e manutenibile.",
+        " */"
+      ]
+    },
+    "experiences": {
+      "title": "esperienze",
+      "lines": [
+        "/**",
+        " * Esperienza",
+        " ",
+        " * Sviluppatore Frontend — DEPI",
+        " * Lug 2025 - Dic 2025",
+        " * Ho sviluppato applicazioni React moderne all'interno di",
+        " * un programma intensivo di sviluppo frontend di 216 ore.",
+        " * Ho lavorato con React, TypeScript, JavaScript, HTML, CSS,",
+        " * Bootstrap, Node.js, Express.js, Git e Docker.",
+        " ",
+        " * Sviluppatore Frontend — IEEE Mansoura",
+        " * Ho lavorato all'applicazione islamica Rafiq, contribuendo",
+        " * allo sviluppo frontend e all'esperienza utente.",
+        " ",
+        " * Sistemi Embedded e Robotica",
+        " * Ho lavorato su sistemi embedded e autonomi con",
+        " * AVR/ATmega32, ESP32, PIC, Raspberry Pi, RTOS, CAN",
+        " * e ROS2.",
+        " ",
+        " * F1TENTH Autonomous Racing",
+        " * Ho sviluppato sistemi di guida autonoma con ROS2 Foxy,",
+        " * LiDAR, IMU, encoder, odometria e Pure Pursuit.",
+        " * 12° al mondo e 1° in Egitto nella F1TENTH",
+        " * CDC 2024.",
+        " ",
+        " */"
+      ]
+    },
+    "edu-uol": {
+      "title": "Laurea in Ing. Informatica",
+      "lines": [
+        "/**",
+        " * Laurea in Ingegneria",
+        " * Ingegneria Informatica e dei Sistemi di Controllo",
+        " ",
+        " * Facoltà di Ingegneria",
+        " * Università di Mansoura — Egitto",
+        " ",
+        " * Laureato con il massimo dei voti e lode.",
+        " * Media complessiva: 89,07%",
+        " ",
+        " * Ho studiato ingegneria informatica con particolare",
+        " * attenzione allo sviluppo software, ai sistemi di controllo,",
+        " * ai sistemi embedded, all'elettronica, alla robotica",
+        " * e alla programmazione.",
+        " ",
+        " * Ho maturato esperienza pratica con microcontrollori,",
+        " * sistemi embedded, sistemi real-time, protocolli di",
+        " * comunicazione, sviluppo web e veicoli autonomi.",
+        " ",
+        " * Aree principali:",
+        " * - Ingegneria Informatica",
+        " * - Sistemi di Controllo",
+        " * - Sistemi Embedded",
+        " * - Robotica e Sistemi Autonomi",
+        " * - Sviluppo Software",
+        " */"
+      ]
+    },
+    "edu-degree": {
+      "title": "Magistrale in Ing. Informatica",
+      "lines": [
+        "/**",
+        " * Laurea Magistrale",
+        " * Ingegneria Informatica",
+        " ",
+        " * Università degli Studi di Padova",
+        " * Padova, Italia",
+        " ",
+        " * Ammesso alla Laurea Magistrale in Ingegneria",
+        " * Informatica, con inizio a ottobre 2026.",
+        " ",
+        " * Il percorso prosegue la mia formazione ingegneristica",
+        " * con studi avanzati in ingegneria informatica e",
+        " * tecnologie di calcolo moderne.",
+        " ",
+        " * Interessi attuali:",
+        " * - Ingegneria del Software",
+        " * - Sviluppo Full-Stack",
+        " * - Cloud Computing",
+        " * - Sistemi Autonomi",
+        " * - Robotica",
+        " * - Sistemi Embedded",
+        " * - Intelligenza Artificiale",
+        " */"
+      ]
+    }
+  },
+  "projects": {
+    "kicker": "// lavori in evidenza",
+    "title": "_progetti",
+    "prev": "Progetto precedente",
+    "next": "Progetto successivo",
+    "live": "live →",
+    "docs": "documentazione →",
+    "items": {
+      "p1": "Breve descrizione di una o due righe su cosa fa e sull'impatto che ha avuto.",
+      "p2": "Breve descrizione di una o due righe su cosa fa e sull'impatto che ha avuto.",
+      "p3": "Breve descrizione di una o due righe su cosa fa e sull'impatto che ha avuto."
+    }
+  },
+  "certificates": {
+    "kicker": "// prove di lavoro",
+    "title": "_certificati",
+    "search": "cerca certificati...",
+    "all": "tutti",
+    "noMatch": "// nessun certificato corrisponde a \"{{query}}\"",
+    "view": "certificato.view",
+    "close": "Chiudi",
+    "verify": "verifica credenziale",
+    "items": {
+      "c1": {
+        "title": "Corso di formazione sui fondamenti della guida autonoma",
+        "date": "Ott 2023"
+      },
+      "c2": {
+        "title": "Sviluppo Software - Sviluppatore Web Frontend React",
+        "date": "Dic 2025"
+      },
+      "c3": {
+        "title": "Partecipazione Categoria Autonoma - Electric Vehicle Rally",
+        "date": "Set 2024"
+      },
+      "c4": {
+        "title": "Qualificazione alla 2ª F1TENTH Sim Racing League internazionale",
+        "date": "2024"
+      },
+      "c5": {
+        "title": "Partecipazione alla 2ª F1TENTH Sim Racing League internazionale",
+        "date": "2024"
+      },
+      "c6": {
+        "title": "Riconoscimento come Responsabile del Comitato Autonomous",
+        "date": "2024"
+      },
+      "c7": { "title": "Volontario più attivo nel Frontend", "date": "2024" },
+      "c8": {
+        "title": "Completamento del corso di JavaScript",
+        "date": "Lug 2025"
+      },
+      "c9": {
+        "title": "Formazione estiva in sviluppo web MEAN-Stack",
+        "date": "Ago 2025"
+      },
+      "c10": {
+        "title": "Formazione estiva per Web Designer",
+        "date": "Set 2024"
+      },
+      "c11": { "title": "Campo estivo di sviluppo web", "date": "2025" },
+      "c12": {
+        "title": "Contributo come istruttore in Sistemi Embedded",
+        "date": "Set 2024"
+      },
+      "c13": {
+        "title": "Riconoscimento come membro del comitato Embedded",
+        "date": "Ott 2023"
+      },
+      "c14": {
+        "title": "Percorso di Business English - Round 3",
+        "date": "Dic 2025"
+      }
+    }
+  },
+  "contact": {
+    "kicker": "// parliamone",
+    "title": "_contatti",
+    "name": "nome",
+    "email": "email",
+    "message": "messaggio",
+    "namePh": "Il tuo nome",
+    "messagePh": "Raccontami del tuo progetto...",
+    "send": "invia messaggio",
+    "sending": "invio in corso...",
+    "sent": "inviato!",
+    "errName": "il nome è obbligatorio",
+    "errEmail": "inserisci un'email valida",
+    "errMessage": "il messaggio deve contenere almeno 10 caratteri",
+    "errSubmit": "qualcosa è andato storto — riprova o scrivimi direttamente via email"
+  },
+  "footer": {
+    "echo": "echo \"grazie per aver scrollato fin qui\"",
+    "rights": "Tutti i diritti riservati."
+  }
+}

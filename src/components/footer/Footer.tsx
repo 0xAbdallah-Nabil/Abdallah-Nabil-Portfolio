@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaFacebook, FaWhatsappSquare  } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const socialLinks = [
     {
@@ -25,7 +26,7 @@ const socialLinks = [
 
 export default function Footer() {
     const year = new Date().getFullYear();
-
+    const { t } = useTranslation();
 
 
     return (
@@ -60,8 +61,7 @@ export default function Footer() {
                     <div>
 
                         <p className="text-slate-500 mt-1">
-                            <span className="text-indigo-500 dark:text-indigo-400">$</span> echo "thanks for
-                            scrolling this far"
+                            <span className="text-indigo-500 dark:text-indigo-400">$</span> {t("footer.echo")}
                         </p>
                     </div>
 
@@ -75,7 +75,7 @@ export default function Footer() {
                 <div className="flex flex-col-reverse md:flex-row items-center md:justify-between gap-3 text-slate-500 text-xs">
                     <p>
                         <span className="text-slate-400 dark:text-slate-600">// </span>
-                        &copy; {year} Abdallah Nabil. All rights reserved.
+                        &copy; {year} Abdallah Nabil. {t("footer.rights")}
                     </p>
                     <a
                         href="mailto:abdallahnabil2003@gmail.com"

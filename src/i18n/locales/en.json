@@ -1,0 +1,229 @@
+{
+  "nav": {
+    "hello": "_hello",
+    "about": "_about-me",
+    "projects": "_projects",
+    "certificates": "_certificates",
+    "contact": "_Contact"
+  },
+  "hero": {
+    "greeting": "\"Hello world\". I am",
+    "roles": [
+      "Frontend Developer",
+      "Backend Developer",
+      "Full Stack Developer"
+    ],
+    "line1": "Self-motivated, hardworking individual",
+    "line2": "a full stack developer with over 4 years of professional experience."
+  },
+  "about": {
+    "skills": "// Relevant Skills",
+    "details": "details",
+    "contacts": "contacts"
+  },
+  "documents": {
+    "bio": {
+      "title": "bio",
+      "lines": [
+        "/**",
+        " * About me",
+        " ",
+        " * I am a Computer and Control Systems Engineer",
+        " * passionate about software development, embedded",
+        " * systems, robotics, and autonomous vehicles.",
+        " ",
+        " * I enjoy building modern web applications with React,",
+        " * TypeScript, JavaScript, and modern web technologies,",
+        " * while also exploring backend development and cloud",
+        " * technologies.",
+        " ",
+        " * My engineering background also gives me hands-on",
+        " * experience with microcontrollers, embedded systems,",
+        " * ROS2, computer vision, and autonomous systems.",
+        " ",
+        " * I have worked on projects ranging from full-stack",
+        " * web applications to autonomous racing systems,",
+        " * embedded controllers, and connected devices.",
+        " ",
+        " * I enjoy solving complex engineering problems, learning",
+        " * new technologies, and writing clean, maintainable code.",
+        " */"
+      ]
+    },
+    "experiences": {
+      "title": "experiences",
+      "lines": [
+        "/**",
+        " * Experience",
+        " ",
+        " * Frontend Developer — DEPI",
+        " * Jul 2025 - Dec 2025",
+        " * Built modern React applications as part of a",
+        " * 216-hour intensive frontend development program.",
+        " * Worked with React, TypeScript, JavaScript, HTML, CSS,",
+        " * Bootstrap, Node.js, Express.js, Git, and Docker.",
+        " ",
+        " * Frontend Developer — IEEE Mansoura",
+        " * Worked on the Rafiq Islamic application, contributing",
+        " * to the frontend development and user experience.",
+        " ",
+        " * Embedded Systems & Robotics",
+        " * Worked on embedded and autonomous systems using",
+        " * AVR/ATmega32, ESP32, PIC, Raspberry Pi, RTOS, CAN,",
+        " * and ROS2.",
+        " ",
+        " * F1TENTH Autonomous Racing",
+        " * Developed autonomous racing systems using ROS2 Foxy,",
+        " * LiDAR, IMU, wheel encoders, odometry, and Pure Pursuit.",
+        " * Achieved 12th globally and 1st in Egypt in F1TENTH",
+        " * CDC 2024.",
+        " ",
+        " */"
+      ]
+    },
+    "edu-uol": {
+      "title": "B.Sc in Computer Engineering",
+      "lines": [
+        "/**",
+        " * Bachelor of Engineering",
+        " * Computer and Control Systems Engineering",
+        " ",
+        " * Faculty of Engineering",
+        " * Mansoura University — Egypt",
+        " ",
+        " * Graduated with Excellent degree and Honors.",
+        " * Cumulative grade: 89.07%",
+        " ",
+        " * Studied computer engineering with a strong focus on",
+        " * software development, control systems, embedded",
+        " * systems, electronics, robotics, and programming.",
+        " ",
+        " * Developed practical experience with microcontrollers,",
+        " * embedded systems, real-time systems, communication",
+        " * protocols, web development, and autonomous vehicles.",
+        " ",
+        " * Major areas:",
+        " * - Computer Engineering",
+        " * - Control Systems",
+        " * - Embedded Systems",
+        " * - Robotics & Autonomous Systems",
+        " * - Software Development",
+        " */"
+      ]
+    },
+    "edu-degree": {
+      "title": "M.Sc in Computer Engineering",
+      "lines": [
+        "/**",
+        " * Master of Science",
+        " * Computer Engineering",
+        " ",
+        " * University of Padua",
+        " * Padua, Italy",
+        " ",
+        " * Accepted for the M.Sc. in Computer Engineering",
+        " * program starting October 2026.",
+        " ",
+        " * The program continues my engineering background with",
+        " * advanced studies in computer engineering and modern",
+        " * computing technologies.",
+        " ",
+        " * Current interests include:",
+        " * - Software Engineering",
+        " * - Full-Stack Development",
+        " * - Cloud Computing",
+        " * - Autonomous Systems",
+        " * - Robotics",
+        " * - Embedded Systems",
+        " * - Artificial Intelligence",
+        " */"
+      ]
+    }
+  },
+  "projects": {
+    "kicker": "// featured work",
+    "title": "_projects",
+    "prev": "Previous project",
+    "next": "Next project",
+    "live": "live →",
+    "docs": "documentation →",
+    "items": {
+      "p1": "Short one/two line description of what it does and the impact it had.",
+      "p2": "Short one/two line description of what it does and the impact it had.",
+      "p3": "Short one/two line description of what it does and the impact it had."
+    }
+  },
+  "certificates": {
+    "kicker": "// proof of work",
+    "title": "_certificates",
+    "search": "search certificates...",
+    "all": "all",
+    "noMatch": "// no certificates match \"{{query}}\"",
+    "view": "certificate.view",
+    "close": "Close",
+    "verify": "verify credential",
+    "items": {
+      "c1": {
+        "title": "Autonomous Fundamentals Training Course",
+        "date": "Oct 2023"
+      },
+      "c2": {
+        "title": "Software Development - React Frontend Web Developer",
+        "date": "Dec 2025"
+      },
+      "c3": {
+        "title": "Autonomous Track Participation - Electric Vehicle Rally",
+        "date": "Sep 2024"
+      },
+      "c4": {
+        "title": "2nd International F1TENTH Sim Racing League Qualification",
+        "date": "2024"
+      },
+      "c5": {
+        "title": "2nd International F1TENTH Sim Racing League Participation",
+        "date": "2024"
+      },
+      "c6": {
+        "title": "Head of Autonomous Committee Appreciation",
+        "date": "2024"
+      },
+      "c7": { "title": "Most Active Volunteer in Frontend", "date": "2024" },
+      "c8": { "title": "JavaScript Course Completion", "date": "Jul 2025" },
+      "c9": {
+        "title": "MEAN-Stack Web Development Summer Training",
+        "date": "Aug 2025"
+      },
+      "c10": { "title": "Web Designer Summer Training", "date": "Sep 2024" },
+      "c11": { "title": "Web Development Summer Camp", "date": "2025" },
+      "c12": {
+        "title": "Instructor Contribution in Embedded Systems",
+        "date": "Sep 2024"
+      },
+      "c13": {
+        "title": "Embedded Committee Member Appreciation",
+        "date": "Oct 2023"
+      },
+      "c14": { "title": "Business English Track - Round 3", "date": "Dec 2025" }
+    }
+  },
+  "contact": {
+    "kicker": "// let's talk",
+    "title": "_contact",
+    "name": "name",
+    "email": "email",
+    "message": "message",
+    "namePh": "Your name",
+    "messagePh": "Tell me about your project...",
+    "send": "send message",
+    "sending": "sending...",
+    "sent": "sent!",
+    "errName": "name is required",
+    "errEmail": "enter a valid email",
+    "errMessage": "message should be at least 10 characters",
+    "errSubmit": "something went wrong — try again or email me directly"
+  },
+  "footer": {
+    "echo": "echo \"thanks for scrolling this far\"",
+    "rights": "All rights reserved."
+  }
+}

@@ -2,21 +2,22 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Award, ExternalLink, Search, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { certificates } from "@/data/certificates";
-import type { Certificate } from "@/types/certificate";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CertificatesGallery() {
     const sectionRef = useRef<HTMLElement>(null);
+    const { t, i18n } = useTranslation();
     const cardsRef = useRef<HTMLButtonElement[]>([]);
     // eslint-disable-next-line react-hooks/refs
     cardsRef.current = [];
 
     const [ query, setQuery ] = useState("");
     const [ activeIssuer, setActiveIssuer ] = useState<string | null>(null);
-    const [ selected, setSelected ] = useState<Certificate | null>(null);
+    const [ selectedId, setSelectedId ] = useState<string | null>(null);
 
     const addCardRef = (el: HTMLButtonElement | null) => {
         if (el) cardsRef.current.push(el);
@@ -27,9 +28,20 @@ export default function CertificatesGallery() {
         []
     );
 
+    const items = useMemo(
+        () => certificates.map((c) => ({
+            ...c,
+            title: t(`certificates.items.${c.id}.title`),
+            date: t(`certificates.items.${c.id}.date`),
+        })),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [ i18n.language ]
+    );
+    const selected = items.find((cert) => cert.id === selectedId) ?? null;
+
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
-        return certificates.filter((c) => {
+        return items.filter((c) => {
             const matchesIssuer = !activeIssuer || c.issuer === activeIssuer;
             const matchesQuery =
                 !q ||
@@ -38,7 +50,7 @@ export default function CertificatesGallery() {
                 c.skills?.some((s) => s.toLowerCase().includes(q));
             return matchesIssuer && matchesQuery;
         });
-    }, [ query, activeIssuer ]);
+    }, [ query, activeIssuer, items ]);
 
     useLayoutEffect(() => {
         const section = sectionRef.current;
@@ -63,15 +75,14 @@ export default function CertificatesGallery() {
         }, section);
 
         return () => ctx.revert();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ filtered.length ]);
 
     // lightbox: close on Escape, lock body scroll while open
     useEffect(() => {
-        if (!selected) return;
+        if (!selectedId) return;
 
         const onKey = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setSelected(null);
+            if (e.key === "Escape") setSelectedId(null);
         };
         document.addEventListener("keydown", onKey);
         const prevOverflow = document.body.style.overflow;
@@ -81,7 +92,7 @@ export default function CertificatesGallery() {
             document.removeEventListener("keydown", onKey);
             document.body.style.overflow = prevOverflow;
         };
-    }, [ selected ]);
+    }, [ selectedId ]);
 
     return (
         <section
@@ -90,9 +101,9 @@ export default function CertificatesGallery() {
             className="w-full bg-white dark:bg-[#0a1628] border-t border-slate-200 dark:border-slate-800 font-mono py-20 px-6 transition-colors"
         >
             <div className="max-w-6xl mx-auto">
-                <p className="text-slate-500 text-sm mb-2">// proof of work</p>
+                <p className="text-slate-500 text-sm mb-2">{t("certificates.kicker")}</p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white mb-8">
-                    _certificates
+                    {t("certificates.title")}
                 </h2>
 
                 {/* search + filter row */}
@@ -105,7 +116,7 @@ export default function CertificatesGallery() {
                         <input
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            placeholder="search certificates..."
+                            placeholder={t("certificates.search")}
                             className="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-md pl-9 pr-3 py-2
                                        text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600
                                        focus:outline-none focus:border-orange-400/60 focus:ring-1 focus:ring-orange-400/30 transition-colors"
@@ -121,7 +132,7 @@ export default function CertificatesGallery() {
                                 : "border-slate-300 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-600"
                                 }`}
                         >
-                            all ({certificates.length})
+                            {t("certificates.all")} ({certificates.length})
                         </button>
                         {issuers.map((issuer) => (
                             <button
@@ -144,7 +155,7 @@ export default function CertificatesGallery() {
                 {/* image grid */}
                 {filtered.length === 0 ? (
                     <p className="text-slate-500 dark:text-slate-400 text-sm">
-                        // no certificates match "{query}"
+                        {t("certificates.noMatch", { query })}
                     </p>
                 ) : (
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -153,7 +164,7 @@ export default function CertificatesGallery() {
                                 key={cert.id}
                                 type="button"
                                 ref={addCardRef}
-                                onClick={() => setSelected(cert)}
+                                onClick={() => setSelectedId(cert.id)}
                                 className="group text-left rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60
                                            overflow-hidden hover:border-orange-400/60 transition-colors"
                             >
@@ -192,18 +203,18 @@ export default function CertificatesGallery() {
             {selected && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-6"
-                    onClick={() => setSelected(null)}
+                    onClick={() => setSelectedId(null)}
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
                         className="w-full max-w-lg rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden"
                     >
                         <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
-                            <span className="text-xs text-slate-500">certificate.view</span>
+                            <span className="text-xs text-slate-500">{t("certificates.view")}</span>
                             <button
                                 type="button"
-                                onClick={() => setSelected(null)}
-                                aria-label="Close"
+                                onClick={() => setSelectedId(null)}
+                                aria-label={t("certificates.close")}
                                 className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                             >
                                 <X size={16} />
@@ -255,7 +266,7 @@ export default function CertificatesGallery() {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1.5 text-sm text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300"
                                 >
-                                    verify credential <ExternalLink size={13} />
+                                    {t("certificates.verify")} <ExternalLink size={13} />
                                 </a>
                             )}
                         </div>

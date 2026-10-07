@@ -4,10 +4,11 @@ import BioEditor from "./BioEditor";
 import SkillsPanel from "./SkillsPanel";
 
 import { documents } from "@/data/documents";
-
+import { useTranslation } from "react-i18next";
 
 
 export default function GeneralInfo() {
+    const { t } = useTranslation();
     const [ openTabIds, setOpenTabIds ] = useState<string[]>([ "bio" ]);
     const [ activeId, setActiveId ] = useState<string | null>("bio");
 
@@ -33,11 +34,12 @@ export default function GeneralInfo() {
     };
 
     const openDocs = openTabIds
-        .map((id) => documents[ id ])
-        .filter(
-            (doc): doc is (typeof documents)[ string ] =>
-                Boolean(doc)
-        );
+        .filter((id) => documents[ id ])
+        .map((id) => ({
+            id,
+            title: t(`documents.${id}.title`),
+            lines: t(`documents.${id}.lines`, { returnObjects: true }) as string[],
+        }));
 
     return (
         <section

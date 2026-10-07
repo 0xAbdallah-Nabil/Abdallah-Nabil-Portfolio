@@ -1,15 +1,14 @@
 import { skillCategories } from "@/data/skills";
-
+import { useTranslation } from "react-i18next";
 
 
 export default function SkillsPanel() {
-
-
+    const { t } = useTranslation();
 
     return (
         <aside className="sticky top-0  w-full md:w-[420px] shrink-0 bg-white dark:bg-[#0a1628] border-l border-slate-200 dark:border-slate-800 font-mono text-sm px-6 py-6 transition-colors">
             <p className="text-slate-500 mb-6">
-                // Relevant Skills
+                {t("about.skills")}
             </p>
 
             <div
@@ -23,7 +22,7 @@ export default function SkillsPanel() {
                             </span>
 
                             <button className="text-slate-500 text-xs hover:text-slate-700 dark:hover:text-slate-300">
-                                details
+                                {t("about.details")}
                             </button>
                         </div>
 

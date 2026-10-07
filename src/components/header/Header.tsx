@@ -4,16 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import gsap from "gsap";
 import type { RootState, AppDispatch } from "@/store";
 import { toggleTheme } from "@/features/theme/themeSlice";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-    { label: "_hello", href: "#hello" },
-    { label: "_about-me", href: "#about" },
-    { label: "_projects", href: "#projects" },
-    { label: "_certificates", href: "#certificates" },
-    { label: "_Contact", href: "#contact" },
+    { key: "hello", href: "#hello" },
+    { key: "about", href: "#about" },
+    { key: "projects", href: "#projects" },
+    { key: "certificates", href: "#certificates" },
+    { key: "contact", href: "#contact" },
 ];
 
 export default function Header() {
+    const { t } = useTranslation();
     const [ active, setActive ] = useState("_hello");
     const [ menuOpen, setMenuOpen ] = useState(false);
     const [ shouldRender, setShouldRender ] = useState(false);
@@ -108,20 +111,27 @@ export default function Header() {
                 <nav className="hidden md:flex h-12 justify-center items-center ">
                     {navLinks.map((link) => (
                         <a
-                            key={link.label}
+                            key={link.key}
                             href={link.href}
-                            onClick={() => handleDesktopNavClick(link.label)}
-                            className={`px-6 h-12 flex items-center transition-colors ${active === link.label
+                            onClick={() => handleDesktopNavClick(link.key)}
+                            className={`px-6 h-12 flex items-center transition-colors ${active === link.key
                                 ? "text-slate-900 dark:text-white border-b-2 border-b-orange-400"
                                 : "text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-200"
                                 }`}
                         >
-                            {link.label}
+                            {t(`nav.${link.key}`)}
                         </a>
                     ))}
                 </nav>
 
                 <div className="hidden md:block " />
+
+                <button
+                    type="button"
+                    className="absolute left-4 h-12 w-12 flex items-center justify-center text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-200 transition-colors"
+                >
+                    <LanguageSwitcher />
+                </button>
                 <button
                     type="button"
                     onClick={() => dispatch(toggleTheme())}
@@ -146,16 +156,16 @@ export default function Header() {
                     <nav ref={navRef} className="md:hidden flex flex-col">
                         {navLinks.map((link) => (
                             <a
-                                key={link.label}
+                                key={link.key}
                                 ref={addLinkRef}
                                 href={link.href}
-                                onClick={(e) => handleMobileNavClick(e, link.label, link.href)}
-                                className={`px-6 h-12 flex items-center justify-center border-b border-slate-200 dark:border-gray-400 transition-colors ${active === link.label
+                                onClick={(e) => handleMobileNavClick(e, link.key, link.href)}
+                                className={`px-6 h-12 flex items-center justify-center border-b border-slate-200 dark:border-gray-400 transition-colors ${active === link.key
                                     ? "text-slate-900 dark:text-white border-l-2 border-l-orange-400"
                                     : "text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-200"
                                     }`}
                             >
-                                {link.label}
+                                {t(`nav.${link.key}`)}
                             </a>
                         ))
                         }

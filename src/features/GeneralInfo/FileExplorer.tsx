@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight, FileCode2 } from "lucide-react";
 import { FaGithub, FaLinkedin, FaFacebook, FaWhatsappSquare } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 interface FileExplorerProps {
     onOpenFile: (id: string) => void;
@@ -8,6 +9,7 @@ interface FileExplorerProps {
 }
 
 export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerProps) {
+    const { t } = useTranslation();
     const [ openFolders, setOpenFolders ] = useState({
         root: true,
         education: true,
@@ -38,7 +40,7 @@ export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerP
                     {/* bio — plain file, opens directly */}
                     <button onClick={() => onOpenFile("bio")} className={fileClasses("bio")}>
                         <FileCode2 size={14} className="text-blue-500 dark:text-blue-400" />
-                        bio
+                        {t("documents.bio.title")}
                     </button>
 
                     {/* experiences — plain file, opens directly */}
@@ -47,7 +49,7 @@ export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerP
                         className={fileClasses("experiences")}
                     >
                         <FileCode2 size={14} className="text-blue-500 dark:text-blue-400" />
-                        experiences
+                        {t("documents.experiences.title")}
                     </button>
 
                     {/* education — folder, toggles to reveal files */}
@@ -67,7 +69,7 @@ export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerP
                                 style={{ fontSize: "12px" }}
                             >
                                 <FileCode2 size={14} className="text-orange-500 dark:text-orange-400" />
-                                B.Sc in Computer Engineering
+                                {t("documents.edu-uol.title")}
                             </button>
                             <button
                                 onClick={() => onOpenFile("edu-degree")}
@@ -75,7 +77,7 @@ export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerP
                                 style={{ fontSize: "12px" }}
                             >
                                 <FileCode2 size={14} className="text-orange-500 dark:text-orange-400" />
-                                M.Sc in Computer Engineering
+                                {t("documents.edu-degree.title")}
                             </button>
                         </div>
                     )}
@@ -84,7 +86,7 @@ export default function FileExplorer({ onOpenFile, activeFileId }: FileExplorerP
 
             {/* contacts */}
             <div className=" md:block hidden mt-4 px-3 py-2 text-slate-800 dark:text-slate-200 font-medium border-t border-slate-200 dark:border-slate-800">
-                contacts
+                {t("about.contacts")}
             </div>
             <div className="pl-4 pb-4 md:flex md:flex-col md:items-start md:gap-2 hidden">
                 <a

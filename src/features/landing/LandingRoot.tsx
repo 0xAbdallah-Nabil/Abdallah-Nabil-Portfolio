@@ -5,11 +5,14 @@ import ShapeGrid from "@/components/ShapeGrid";
 import photo1 from "@/assets/images/image2.jpeg";
 import photo2 from "@/assets/images/image1.jpeg";
 import type { RootState } from "@/store";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
     const mode = useSelector((state: RootState) => state.theme.mode);
     const isDark = mode === "dark";
-
+    const { t, i18n } = useTranslation();
+    const roles = t("hero.roles", { returnObjects: true }) as string[];
+    const sequence = roles.flatMap((r) => [ r, 2000 ]);
     return (
         <section
             id="hello"
@@ -43,7 +46,7 @@ export default function Hero() {
                 {/* TEXT */}
                 <div className="order-2 md:order-1 text-center md:text-left">
                     <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mb-2">
-                        "Hello world". I am
+                        {t("hero.greeting")}
                     </p>
 
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-900 dark:text-white mb-4">
@@ -54,14 +57,8 @@ export default function Hero() {
                         <h2>
                             {"> "}
                             <TypeAnimation
-                                sequence={[
-                                    "Frontend Developer",
-                                    2000,
-                                    "Backend Developer",
-                                    2000,
-                                    "Full Stack Developer",
-                                    2000,
-                                ]}
+                                key={i18n.language}
+                                sequence={sequence}
                                 wrapper="span"
                                 speed={50}
                                 repeat={Infinity}
@@ -74,13 +71,12 @@ export default function Hero() {
                     <div className="inline-block text-left mx-auto md:mx-0 space-y-1 text-slate-600 dark:text-slate-400 text-sm md:text-base">
                         <p>
                             <span className="text-slate-400 dark:text-slate-500">// </span>
-                            Self-motivated, hardworking individual
+                            {t("hero.line1")}
                         </p>
 
                         <p>
                             <span className="text-slate-400 dark:text-slate-500">// </span>
-                            a full stack developer with over 4 years of professional
-                            experience.
+                            {t("hero.line2")}
                         </p>
 
                         <a href="https://www.linkedin.com/in/0xabdallah-nabil/" target="_blank" rel="noopener noreferrer" className="block">

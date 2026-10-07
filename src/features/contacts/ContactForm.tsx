@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Send, CheckCircle2, XCircle } from "lucide-react";
 
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import type { ContactFormData, ContactStatus } from "@/types/contacts";
 import type { RootState } from "@/store";
 
@@ -25,6 +26,7 @@ export default function ContactForm() {
     fieldsRef.current = [];
     const mode = useSelector((state: RootState) => state.theme.mode);
     const isDark = mode === "dark";
+    const { t } = useTranslation();
 
     const [ data, setData ] = useState<ContactFormData>(initialData);
     const [ status, setStatus ] = useState<ContactStatus>("idle");
@@ -67,10 +69,10 @@ export default function ContactForm() {
     };
 
     const validate = (): string | null => {
-        if (!data.name.trim()) return "name is required";
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return "enter a valid email";
+        if (!data.name.trim()) return t("contact.errName");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return t("contact.errEmail");
         if (!data.message.trim() || data.message.trim().length < 10)
-            return "message should be at least 10 characters";
+            return t("contact.errMessage");
         return null;
     };
 
@@ -99,7 +101,7 @@ export default function ContactForm() {
             setData(initialData);
         } catch {
             setStatus("error");
-            setErrorMsg("something went wrong — try again or email me directly");
+            setErrorMsg(t("contact.errSubmit"));
         }
     };
 
@@ -121,9 +123,9 @@ export default function ContactForm() {
                 />
             </div>
             <div className="relative z-20 max-w-4xl mx-auto">
-                <p className="text-slate-500 text-sm mb-2 relative z-10">// let's talk</p>
+                <p className="text-slate-500 text-sm mb-2 relative z-10">{t("contact.kicker")}</p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-white mb-10 relative z-10">
-                    _contact
+                    {t("contact.title")}
                 </h2>
 
                 <form
@@ -142,14 +144,14 @@ export default function ContactForm() {
                         <div className="p-6 space-y-5 md:w-2/3 w-full">
                             <div ref={addFieldRef}>
                                 <label htmlFor="name" className="block text-sm text-indigo-500 dark:text-indigo-400 mb-1">
-                                    <span className="text-slate-500">$</span> name
+                                    <span className="text-slate-500">$</span> {t("contact.name")}
                                 </label>
                                 <input
                                     id="name"
                                     name="name"
                                     value={data.name}
                                     onChange={handleChange}
-                                    placeholder="Your name"
+                                    placeholder={t("contact.namePh")}
                                     className="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-md px-3 py-2
                                            text-slate-800 dark:text-slate-200 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-600
                                            focus:outline-none focus:border-orange-400/60 focus:ring-1 focus:ring-orange-400/30
@@ -159,7 +161,7 @@ export default function ContactForm() {
 
                             <div ref={addFieldRef}>
                                 <label htmlFor="email" className="block text-sm text-indigo-500 dark:text-indigo-400 mb-1">
-                                    <span className="text-slate-500">$</span> email
+                                    <span className="text-slate-500">$</span> {t("contact.email")}
                                 </label>
                                 <input
                                     id="email"
@@ -177,7 +179,7 @@ export default function ContactForm() {
 
                             <div ref={addFieldRef}>
                                 <label htmlFor="message" className="block text-sm text-indigo-500 dark:text-indigo-400 mb-1">
-                                    <span className="text-slate-500">$</span> message
+                                    <span className="text-slate-500">$</span> {t("contact.message")}
                                 </label>
                                 <textarea
                                     id="message"
@@ -185,7 +187,7 @@ export default function ContactForm() {
                                     value={data.message}
                                     onChange={handleChange}
                                     rows={5}
-                                    placeholder="Tell me about your project..."
+                                    placeholder={t("contact.messagePh")}
                                     className="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-300 dark:border-slate-800 rounded-md px-3 py-2
                                            text-slate-800 dark:text-slate-200 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-600 resize-none
                                            focus:outline-none focus:border-orange-400/60 focus:ring-1 focus:ring-orange-400/30
@@ -203,12 +205,12 @@ export default function ContactForm() {
                                            transition-colors"
                                 >
                                     <Send size={15} />
-                                    {status === "sending" ? "sending..." : "send message"}
+                                    {status === "sending" ? t("contact.sending") : t("contact.send")}
                                 </button>
 
                                 {status === "success" && (
                                     <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 text-sm">
-                                        <CheckCircle2 size={16} /> sent!
+                                        <CheckCircle2 size={16} /> {t("contact.sent")}
                                     </span>
                                 )}
                                 {status === "error" && errorMsg && (

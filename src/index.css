@@ -14,3 +14,21 @@
 .animate-throb {
     animation: throb 3s ease-in-out infinite;
 }
+/* let our clip-path animation do the work instead of the default fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* new theme must be drawn above the old one while it expands */
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* your components use `transition-colors`, which would fade colors in
+   under the circle and look muddy. Turn it off during the animation. */
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+    transition: none !important;
+}

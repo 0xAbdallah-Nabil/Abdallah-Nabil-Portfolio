@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
 
 export function ThemeInitializer() {
     const mode = useSelector((state: RootState) => state.theme.mode);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const root = document.documentElement;
         root.classList.remove("dark", "light");
         root.classList.add(mode);

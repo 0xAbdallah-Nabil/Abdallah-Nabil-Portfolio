@@ -6,7 +6,7 @@ import type { RootState, AppDispatch } from "@/store";
 import { toggleTheme } from "@/features/theme/themeSlice";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-
+import { flushSync } from "react-dom";
 const navLinks = [
     { key: "hello", href: "#hello" },
     { key: "about", href: "#about" },
@@ -104,7 +104,46 @@ export default function Header() {
             });
         }
     }, [ menuOpen, shouldRender ]);
+    const handleThemeToggle = async () => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+        // fallback for unsupported browsers (e.g. older Firefox) or reduced motion
+        if (!document.startViewTransition || reduceMotion) {
+            dispatch(toggleTheme());
+            return;
+        }
+
+        const root = document.documentElement;
+        root.classList.add("theme-transition");
+
+        const transition = document.startViewTransition(() => {
+            // flushSync makes React commit the state change before the new snapshot is taken
+            flushSync(() => dispatch(toggleTheme()));
+        });
+
+        await transition.ready;
+
+        // top-right corner of the viewport
+        const x = window.innerWidth;
+        const y = 0;
+        const radius = Math.hypot(window.innerWidth, window.innerHeight);
+
+        root.animate(
+            {
+                clipPath: [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${radius}px at ${x}px ${y}px)`,
+                ],
+            },
+            {
+                duration: 700,
+                easing: "ease-in-out",
+                pseudoElement: "::view-transition-new(root)",
+            }
+        );
+
+        transition.finished.finally(() => root.classList.remove("theme-transition"));
+    };
     return (
         <header className="w-full bg-white dark:bg-[#0a1628] font-mono text-sm transition-colors">
             <div className="flex items-center justify-center border-b border-slate-200 dark:border-gray-400 md:border-b-0 relative">
@@ -134,7 +173,7 @@ export default function Header() {
                 </button>
                 <button
                     type="button"
-                    onClick={() => dispatch(toggleTheme())}
+                    onClick={handleThemeToggle}
                     aria-label="Toggle theme"
                     className="absolute right-4 h-12 w-12 flex items-center justify-center text-slate-500 dark:text-gray-400 hover:text-slate-800 dark:hover:text-gray-200 transition-colors"
                 >

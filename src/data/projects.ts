@@ -14,15 +14,15 @@ export const projects: Project[] = [
     },
     {
         id: "p2",
-        title: "Project Two",
+        title: "Famory",
         description: "Short one/two line description of what it does and the impact it had.",
         image: famory,
         tags: [ "React", "JAVAScript", "Tailwind", "react-router" ],
-        link: "https://famory-icyqka08h-abdallahnabil2003-gmailcoms-projects.vercel.app/#/",
+        link: "famory.vercel.app",
     },
     {
         id: "p3",
-        title: "Project Three",
+        title: "Learnova",
         description: "Short one/two line description of what it does and the impact it had.",
         image: learnova,
         tags: [ "Node.js", "MongoDB", "REACT", "Tailwind", "JAVAScript", "Redux", "GSAP", "LENIS" ],
